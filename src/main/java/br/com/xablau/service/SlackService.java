@@ -6,11 +6,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 
 public class SlackService {
-
-    OkHttpClient client = new OkHttpClient();
-    MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
-    String token = "xxxxxxxx-xxxxxxxx";
-    String channel = "xxxx";
+    private String token = "xxxxxxxx-xxxxxxxx";
+    private String channel = "xxxx";
 
     public void sendMessage(String message) {
 
@@ -20,6 +17,9 @@ public class SlackService {
             + "\"text\": \"" + message +"\""
         + "}";
 
+
+        OkHttpClient client = new OkHttpClient();
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
 
         RequestBody body = RequestBody.create(mediaType, json);
         Request request = new Request.Builder()
